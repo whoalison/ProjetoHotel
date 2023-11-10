@@ -19,7 +19,7 @@ public class RepositorioPagamento {
     }
 
     public void removerPagamento(int id) {
-        pagamentos.removeIf(pagamento -> pagamento.getId() == id);
+        pagamentos.removeId(pagamento -> pagamento.getId() == id);
     }
     public Pagamento getPagamentoPorId (int id) {
         for (Pagamento pagamento : pagamentos) {
