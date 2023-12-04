@@ -1,8 +1,7 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioHospede {
-    private List<Hospede> hospedes = new ArrayList<>();
+    private List<Hospede> hospedes;
 
     public RepositorioHospede(List<Hospede> hospedes) {
         this.hospedes = hospedes;
@@ -20,6 +19,7 @@ public class RepositorioHospede {
 
     public void removerHospede(int id) {
         hospedes.removeIf(hospede -> hospede.getId() == id);
+        //remove um hospede da lista de hospedes do sistema
     }
 
     public Hospede getHospedePorId (int id) {

@@ -1,8 +1,7 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioQuarto {
-    private List<Quarto> quartos = new ArrayList<>();
+    private List<Quarto> quartos;
 
     public RepositorioQuarto(List<Quarto> quartos) {
         this.quartos = quartos;
@@ -19,6 +18,7 @@ public class RepositorioQuarto {
 
     public void removerQuarto(int id) {
         quartos.removeIf(quarto -> quarto.getNumeroQuarto() == id);
+        //remove um quarto da lista de quartos dos sitema
     }
     public Quarto getQuartoPorNumero (int numeroQuarto) {
         for (Quarto quarto : quartos) {

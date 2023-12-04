@@ -1,8 +1,7 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioPagamento {
-    private List<Pagamento> pagamentos = new ArrayList<>();
+    private List<Pagamento> pagamentos;
 
     public RepositorioPagamento(List<Pagamento> pagamentos) {
         this.pagamentos = pagamentos;
@@ -15,11 +14,10 @@ public class RepositorioPagamento {
     public List<Pagamento> getAllPagamentos () {
         return pagamentos;
         // retorna a lista completa de pagamentos
-        // lembrar de deixar no plural "Pagamentos"
     }
 
     public void removerPagamento(int id) {
-        pagamentos.removeId(pagamento -> pagamento.getId() == id);
+        pagamentos.removeIf(pagamento -> pagamento.getId() == id);
     }
     public Pagamento getPagamentoPorId (int id) {
         for (Pagamento pagamento : pagamentos) {
