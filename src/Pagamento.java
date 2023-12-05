@@ -3,20 +3,14 @@ import java.util.Date;
 public class Pagamento {
     private double valorTotal;
     private Date dataPagamento;
-    private int id;
+    private String id;
+    private String metodoPagamento;
 
-    public Pagamento(double valorTotal, Date dataPagamento, int id) {
+  public Pagamento(double valorTotal, Date dataPagamento, String id, String metodoPagamento) {
         this.valorTotal = valorTotal;
         this.dataPagamento = dataPagamento;
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.identificador = id;
+        this.metodoPagamento = metodoPagamento;
     }
 
     public double getValorTotal() {
@@ -33,5 +27,21 @@ public class Pagamento {
 
     public void setDataPagamento(Date dataPagamento) {
         this.dataPagamento = dataPagamento;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMetodoPagamento() {
+        return metodoPagamento;
+    }
+
+    public void setMetodoPagamento(String metodoPagamento) {
+        this.metodoPagamento = metodoPagamento;
     }
 }
