@@ -33,7 +33,7 @@ public class Pagamento {
         return identificador;
     }
 
-    public void setId(String identificador) {
+    public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
 
