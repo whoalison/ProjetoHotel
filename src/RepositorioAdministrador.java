@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class RepositorioAdministrador {
-    private List<Administrador> administradores;
+    private ArrayList<Administrador> administradores;
 
     public RepositorioAdministrador() {
         this.administradores = new ArrayList<>();
@@ -12,7 +12,7 @@ public class RepositorioAdministrador {
         // cadastramento de novo administrador na lista de administradores do sistema
     }
 
-    public List<Administrador> getAllAdministradores() {
+    public ArrayList<Administrador> getAllAdministradores() {
         return new ArrayList<>(administradores);
         // retorna uma cópia da lista completa de administradores para evitar modificações externas
     }
