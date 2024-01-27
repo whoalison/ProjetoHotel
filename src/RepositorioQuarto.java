@@ -1,9 +1,9 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class RepositorioQuarto {
-    private List<Quarto> quartos;
+    private ArrayList<Quarto> quartos;
 
-    public RepositorioQuarto(List<Quarto> quartos) {
+    public RepositorioQuarto(ArrayList<Quarto> quartos) {
         this.quartos = quartos;
     }
 
@@ -11,13 +11,13 @@ public class RepositorioQuarto {
         quartos.add(quarto);
         // adiciona um quarto na lista de quartos do sistema
     }
-    public List<Quarto> getAllQuartos() {
+    public ArrayList<Quarto> getAllQuartos() {
         return quartos;
         // retorna a lista completa de quartos
     }
 
-    public void removerQuarto(int id) {
-        quartos.removeIf(quarto -> quarto.getNumeroQuarto() == id);
+    public void removerQuarto(int numeroQuarto) {
+        quartos.removeIf(quarto -> quarto.getNumeroQuarto() == numeroQuarto);
         //remove um quarto da lista de quartos dos sitema
     }
     public Quarto getQuartoPorNumero (int numeroQuarto) {
