@@ -1,9 +1,10 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class RepositorioPagamento {
-    private List<Pagamento> pagamentos;
 
-    public RepositorioPagamento(List<Pagamento> pagamentos) {
+    private ArrayList<Pagamento> pagamentos;
+
+    public RepositorioPagamento(ArrayList<Pagamento> pagamentos) {
         this.pagamentos = pagamentos;
     }
 
@@ -11,7 +12,7 @@ public class RepositorioPagamento {
         pagamentos.add(pagamento);
         // adiciona um pagamento na lista de pagamentos do sistema
     }
-    public List<Pagamento> getAllPagamentos () {
+    public ArrayList<Pagamento> getAllPagamentos () {
         return pagamentos;
         // retorna a lista completa de pagamentos
     }
