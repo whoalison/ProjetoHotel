@@ -5,17 +5,24 @@ public class Administrador {
     private int id;
     private String login;
     private String senha;
+    private int idade;
+    private String telefone;
+    private String email;
+    private String endereco;
 
-    public Administrador(String nome, String sobrenome, String cpf, int id, String login, String senha) {
+    public Administrador(String nome, String sobrenome, String cpf, int id, String login, String senha, int idade, String telefone, String email, String endereco) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.id = id;
         this.login = login;
         this.senha = senha;
+        this.idade = idade;
+        this.telefone = telefone;
+        this.email = email;
+        this.endereco = endereco;
     }
 
-    // Métodos getters
     public String getNome() {
         return nome;
     }
@@ -40,7 +47,23 @@ public class Administrador {
         return senha;
     }
 
-    // Métodos setters
+     public int getIdade() {
+        return idade;
+    }
+
+     public String getTelefone() {
+        return telefone;
+    }
+
+     public String getEmail() {
+        return email;
+    }
+
+     public String getEndereco() {
+        return endereco;
+    }
+    
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -64,5 +87,22 @@ public class Administrador {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }  
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
 }
 
