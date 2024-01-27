@@ -1,14 +1,13 @@
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         // Criando instâncias de Repositórios
-        List<Hospede> hospedes = new ArrayList<>();
-        List<Reserva> reservas = new ArrayList<>();
-        List<Quarto> quartos = new ArrayList<>();
-        List<Pagamento> pagamentos = new ArrayList<>();
+        ArrayList<Hospede> hospedes = new ArrayList<>();
+        ArrayList<Reserva> reservas = new ArrayList<>();
+        ArrayList<Quarto> quartos = new ArrayList<>();
+        ArrayList<Pagamento> pagamentos = new ArrayList<>();
 
         RepositorioHospede repoHospede = new RepositorioHospede(hospedes);
         RepositorioReserva repoReserva = new RepositorioReserva(reservas);
@@ -36,13 +35,13 @@ public class Main {
 
         //Testando algumas das instancias criadas
         System.out.println("Lista de Hospedes:");
-        List<Hospede> listaHospedes = repoHospede.getAllHospedes();
+        ArrayList<Hospede> listaHospedes = repoHospede.getAllHospedes();
         for (Hospede h : listaHospedes) {
             System.out.println(h.getNome() + " " + h.getSobrenome());
         }
 
         System.out.println("\nLista de Reservas:");
-        List<Reserva> listaReservas = repoReserva.getAllReserva();
+        ArrayList<Reserva> listaReservas = repoReserva.getAllReserva();
         for (Reserva r : listaReservas) {
             System.out.println("Reserva " + r.getId() + ": " + r.getHospede().getNome() + " " + r.getHospede().getSobrenome());
         }
