@@ -1,75 +1,44 @@
-import java.io.*;
+package com.example.telasprojeto;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
-public class Main {
-
-    public static void main(String[] args) {
-        ArrayList<Hospede> hospedes = obterHospedesDoUsuario();
-        salvarDadosEmArquivo(hospedes, "hospedes.txt");
-    }
-
-    public static ArrayList<Hospede> obterHospedesDoUsuario() {
-        ArrayList<Hospede> hospedes = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Adicionar Hóspedes (Digite 's' para parar):");
-
-        while (true) {
-            System.out.print("Nome: ");
-            String nome = scanner.nextLine();
-
-            if (nome.equalsIgnoreCase("s")) {
-                break;
-            }
-
-            System.out.print("Sobrenome: ");
-            String sobrenome = scanner.nextLine();
-
-            System.out.print("Endereço: ");
-            String endereco = scanner.nextLine();
-
-            System.out.print("Idade: ");
-            int idade = scanner.nextInt();
-            scanner.nextLine();  // Consumir a quebra de linha
-
-            System.out.print("CPF: ");
-            String cpf = scanner.nextLine();
-
-            System.out.print("Contato: ");
-            String contato = scanner.nextLine();
-
-            System.out.print("Email: ");
-            String email = scanner.nextLine();
-
-            System.out.print("ID: ");
-            int id = scanner.nextInt();
-            scanner.nextLine();  // Consumir a quebra de linha
-
-            Hospede hospede = new Hospede(nome, sobrenome, endereco, idade, cpf, contato, email, id);
-            hospedes.add(hospede);
-
-            System.out.println("Hóspede adicionado com sucesso!");
-            System.out.println("Digite 's' para parar ou continue adicionando hóspedes.");
-        }
-
-        return hospedes;
-    }
+public class ArquivoHospede {
 
     public static void salvarDadosEmArquivo(ArrayList<Hospede> lista, String nomeArquivo) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
-            for (Hospede hospede : lista) {
-                writer.write(hospedeParaString(hospede));
-                writer.newLine();
-            }
+        try {
+            ArrayList<String> linhas = lista.stream().map(ArquivoHospede::hospedeParaString).collect(Collectors.toCollection(ArrayList::new));
+            Path arquivo = Paths.get(nomeArquivo);
+            Files.write(arquivo, linhas);
             System.out.println("Dados salvos com sucesso em " + nomeArquivo);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public static void adicionarHospede(Hospede novoHospede, String nomeArquivo) {
+        ArrayList<Hospede> hospedes = obterHospedesDoArquivo(nomeArquivo);
+
+        hospedes.add(novoHospede);
+
+        salvarDadosEmArquivo(hospedes, nomeArquivo);
+    }
+
+    public static ArrayList<Hospede> obterHospedesDoArquivo(String nomeArquivo) {
+        try {
+            Path arquivo = Paths.get(nomeArquivo);
+            return Files.lines(arquivo).map(ArquivoHospede::stringParaHospede).collect(Collectors.toCollection(ArrayList::new));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
     public static String hospedeParaString(Hospede hospede) {
-        return String.format("%s,%s,%s,%d,%s,%s,%s,%d",
+        return String.format("%s,%s,%s,%d,%s,%s,%s,%d,%s,%s",
                 hospede.getNome(),
                 hospede.getSobrenome(),
                 hospede.getEndereco(),
@@ -77,6 +46,23 @@ public class Main {
                 hospede.getCpf(),
                 hospede.getContato(),
                 hospede.getEmail(),
-                hospede.getId());
+                hospede.getId(),
+                hospede.getLogin(),
+                hospede.getSenha());
+    }
+    public static Hospede stringParaHospede(String linha) {
+        String[] partes = linha.split(",");
+        String nome = partes[0];
+        String sobrenome = partes[1];
+        String endereco = partes[2];
+        int idade = Integer.parseInt(partes[3]);
+        String cpf = partes[4];
+        String contato = partes[5];
+        String email = partes[6];
+        int id = Integer.parseInt(partes[7]);
+        String login = partes[8];
+        String senha = partes[9];
+
+        return new Hospede(nome, sobrenome, endereco, idade, cpf, contato, email, id, login, senha);
     }
 }
