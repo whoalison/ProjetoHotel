@@ -1,18 +1,20 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RepositorioPagamento {
 
     private ArrayList<Pagamento> pagamentos;
 
-    public RepositorioPagamento(ArrayList<Pagamento> pagamentos) {
-        this.pagamentos = pagamentos;
+    public RepositorioPagamento() {
+        this.pagamentos = new ArrayList<>();
     }
 
-    public void adicionarPagamento (Pagamento pagamento) {
+    public void adicionarPagamento(Pagamento pagamento) {
         pagamentos.add(pagamento);
         // adiciona um pagamento na lista de pagamentos do sistema
     }
-    public ArrayList<Pagamento> getAllPagamentos () {
+
+    public ArrayList<Pagamento> getAllPagamentos() {
         return pagamentos;
         // retorna a lista completa de pagamentos
     }
@@ -20,7 +22,8 @@ public class RepositorioPagamento {
     public void removerPagamento(int id) {
         pagamentos.removeIf(pagamento -> pagamento.getId() == id);
     }
-    public Pagamento getPagamentoPorId (int id) {
+
+    public Pagamento getPagamentoPorId(int id) {
         for (Pagamento pagamento : pagamentos) {
             if (pagamento.getId() == id) {
                 return pagamento;

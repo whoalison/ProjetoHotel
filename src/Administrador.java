@@ -62,7 +62,7 @@ public class Administrador {
      public String getEndereco() {
         return endereco;
     }
-    
+
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -88,13 +88,13 @@ public class Administrador {
         this.senha = senha;
     }
 
-    public void setIdade(String idade) {
+    public void setIdade(int idade) {
         this.idade = idade;
     }
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }  
+    }
 
     public void setEmail(String email) {
         this.email = email;
